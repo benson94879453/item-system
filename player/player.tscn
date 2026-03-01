@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c03p1vd8fpc6e"]
+[gd_scene load_steps=6 format=3 uid="uid://c03p1vd8fpc6e"]
 
 [ext_resource type="Texture2D" uid="uid://ccd43ch345ks5" path="res://icon.svg" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://csgcyb6frrveg" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Resource" uid="uid://c4gdxiql02646" path="res://player/player_inventory.tres" id="2_yw30f"]
+[ext_resource type="PackedScene" uid="uid://bhpcd0e51nb63" path="res://ui/bag_ui.tscn" id="3_g1dw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(128, 128)
 
 [node name="player" type="CharacterBody2D"]
+script = ExtResource("1_rkbax")
+player_inventory = ExtResource("2_yw30f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
@@ -14,3 +19,8 @@ texture = ExtResource("1_oul6g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="bag_ui" parent="CanvasLayer" instance=ExtResource("3_g1dw6")]
+unique_name_in_owner = true

@@ -6,6 +6,7 @@
 [node name="slot_item" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_fuwyw")
 
 [node name="ItemTexture" type="TextureRect" parent="."]
@@ -22,6 +23,7 @@ offset_right = 24.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_l0725")
 
 [node name="AmountLabel" type="Label" parent="."]

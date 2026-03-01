@@ -8,14 +8,19 @@ extends Control
 + bag_slot_container.get_children()
 
 # 玩家的背包資料帳本
-@onready var inventory_data: Inventory = preload("res://player/player_inventory.tres")
+var inventory_data: Inventory = preload("res://player/player_inventory.tres")
 
 # 用來像工廠一樣無限複製「道具圖示」的場景藍圖
 @onready var item_icon_scene = preload("res://ui/slot_item.tscn")
 
+var mouse_item: SlotItem = null
 func _ready() -> void:
-	bag_update()
+	close_bag()
 
+func connect_signal():
+	for slot_button in all_ui_slots:
+		slot_button.mouse_button_left_press.connect(mouse_left_slot_button.bind(slot_button))
+	
 # 核心邏輯：盤點與更新畫面
 func bag_update():
 	# 防呆檢查：如果資料庫的格子數，跟畫面上的格子數不一樣，立刻停止執行
@@ -45,3 +50,28 @@ func bag_update():
 		# 把最新的資料交給模型，並請它自己更新畫面(圖片跟數量)
 		item_icon.slot_data = current_slot_data
 		item_icon.slot_item_update()
+
+func set_player_inventory(player_inventory: Inventory):
+	inventory_data = player_inventory
+	
+	if inventory_data:
+		bag_update()
+
+func open_bag(player_inventory: Inventory):
+	set_player_inventory(player_inventory)
+	show()
+
+func close_bag():
+	hide()
+
+func mouse_left_slot_button(slot_button):
+	if slot_button.is_empty() and mouse_item:
+		pass
+	
+	elif !slot_button.is_empty() and !mouse_item:
+		take_item_from_slot(slot_button)
+		
+func take_item_from_slot(slot_button):
+	mouse_item = slot_button.take_item()
+	
+	add_child(mouse_item)
