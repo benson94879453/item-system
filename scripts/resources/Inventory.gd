@@ -12,8 +12,10 @@ func remove_slot(slot: Slot):
 	
 	if index < 0: return
 	
+	# 【修復】：呼叫 Slot 內建的 clear() 方法，真正清空資料格
+	slots[index].clear()
 	inventory_update.emit()
 
-func insert_slot(slot_index: int,slot: Slot):
+func insert_slot(slot_index: int, slot: Slot):
 	slots[slot_index] = slot
 	inventory_update.emit()
