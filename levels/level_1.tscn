@@ -7,3 +7,5 @@
 [node name="player" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

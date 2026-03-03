@@ -1,11 +1,12 @@
 extends Node2D
 class_name BaseTower
 
-@onready var range_area: Area2D = $RangeArea
-@onready var attack_timer: Timer = $AttackTimer
+@onready var range_area: Area2D = %RangeArea
+@onready var attack_timer: Timer = %AttackTimer
 
 var data: TowerData # 儲存這座塔的靈魂資料
 var current_target: Node2D = null
+var target_position: Vector2 = Vector2.ZERO # 之後須改為基地的position
 
 func setup(new_data: TowerData) -> void:
 	data = new_data
