@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccpf3umbtattp"]
+[gd_scene load_steps=4 format=3 uid="uid://ccpf3umbtattp"]
 
+[ext_resource type="PackedScene" uid="uid://dv63ihjky8d68" path="res://entities/enemies/base_enemy.tscn" id="1_bt44k"]
 [ext_resource type="PackedScene" uid="uid://c03p1vd8fpc6e" path="res://player/player.tscn" id="1_vn7o3"]
+[ext_resource type="PackedScene" uid="uid://cg4pn4mbt3h51" path="res://entities/towers/base_tower.tscn" id="2_jirdo"]
 
 [node name="Level1" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_vn7o3")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="BaseEnemy" parent="NavigationRegion2D" instance=ExtResource("1_bt44k")]
+
+[node name="BaseTower" parent="." instance=ExtResource("2_jirdo")]
+
+[node name="player" parent="." instance=ExtResource("1_vn7o3")]

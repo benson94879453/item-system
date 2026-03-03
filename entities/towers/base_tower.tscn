@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg4pn4mbt3h51"]
+[gd_scene load_steps=4 format=3 uid="uid://cg4pn4mbt3h51"]
 
 [ext_resource type="Script" uid="uid://dihk6xle8rh2f" path="res://entities/towers/base_tower.gd" id="1_41kfv"]
+[ext_resource type="Texture2D" uid="uid://bxfb5nfqjbyth" path="res://assets/towers/first_tower.png" id="2_a13c5"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bppto"]
+points = PackedVector2Array(16, 16, -16, 16, 0, -16)
 
 [node name="BaseTower" type="Node2D"]
 script = ExtResource("1_41kfv")
@@ -10,3 +14,9 @@ unique_name_in_owner = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a13c5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_bppto")
