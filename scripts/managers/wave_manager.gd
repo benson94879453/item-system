@@ -32,11 +32,6 @@ func _on_spawn_timer_timeout() -> void:
 
 func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
-		
-	if enemy.has_method("setup") and enemy_data != null:
-		enemy.setup(enemy_data)
-	else:
-		push_warning("生成失敗：怪物缺少 setup 函數或 WaveManager 未配置 enemy_data")
 	
 	# 1. 設定初始位置
 	enemy.global_position = spawn_position
@@ -47,8 +42,13 @@ func spawn_enemy() -> void:
 		enemy_container.add_child(enemy)
 	else:
 		get_tree().current_scene.add_child(enemy)
+	#3
+	if enemy.has_method("setup") and enemy_data != null:
+		enemy.setup(enemy_data)
+	else:
+		push_warning("生成失敗：怪物缺少 setup 函數或 WaveManager 未配置 enemy_data")
 	
-	# 3. 初始化導航目標 (關鍵步驟)
+	# 4. 初始化導航目標 (關鍵步驟)
 	# 這裡假設你的 base_enemy.gd 已經定義了 nav_agent
 	# 我們在敵人進入場景樹後立即設定目標
 	if enemy.has_method("set_target"):

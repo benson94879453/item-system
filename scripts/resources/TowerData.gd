@@ -8,3 +8,4 @@ class_name TowerData
 @export var damage: float = 10.0     # 塔依然保留基礎傷害，當作「參數」傳給子彈
 @export var attack_range: float = 3.0 
 @export var attack_speed: float = 1.0
+@export var health: float = 500.0
