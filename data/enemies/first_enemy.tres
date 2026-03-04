@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://0u0tbww4rlwf"]
+
+[ext_resource type="Script" uid="uid://bjdpna0f8xn3k" path="res://scripts/resources/EnemyData.gd" id="1_2k730"]
+[ext_resource type="Resource" uid="uid://ds8s7kulpm1w" path="res://data/items/apple.tres" id="1_u3mua"]
+[ext_resource type="Texture2D" uid="uid://butchw3vkauay" path="res://assets/enimies/first_enemy.png" id="2_u3mua"]
+
+[resource]
+script = ExtResource("1_2k730")
+id = 1
+name = "white_circle"
+texture = ExtResource("2_u3mua")
+reward_item = ExtResource("1_u3mua")
+avoidance_layers = 1
+avoidance_mask = 7
+metadata/_custom_type_script = "uid://bjdpna0f8xn3k"

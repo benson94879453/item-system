@@ -4,7 +4,7 @@ class_name BaseEnemy
 @onready var sprite: Sprite2D = %Sprite2D
 @onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
 
-var data: EnemyData # 儲存這隻怪物的靈魂資料
+@export var data: EnemyData # 儲存這隻怪物的靈魂資料
 var current_health: float
 
 # 由波次管理器在生成怪物時呼叫，注入資料
