@@ -10,3 +10,4 @@ class_name EnemyData
 @export var reward_amount: int = 1
 @export var avoidance_layers: int
 @export var avoidance_mask: int
+@export var collision_radius: float = 16.0

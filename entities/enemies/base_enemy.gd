@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name BaseEnemy
 
 @onready var sprite: Sprite2D = %Sprite2D
+@onready var collision_shape: CollisionShape2D = %CollisionShape2D
 @onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
 
 @export var data: EnemyData # 儲存這隻怪物的靈魂資料
@@ -10,6 +11,11 @@ var current_health: float
 # 由波次管理器在生成怪物時呼叫，注入資料
 func setup(new_data: EnemyData) -> void:
 	data = new_data
+	# 動態建立碰撞形狀
+	var circle = CircleShape2D.new()
+	circle.radius = data.collision_radius
+	collision_shape.shape = circle
+	
 	current_health = data.max_health
 	
 	if data.texture:
