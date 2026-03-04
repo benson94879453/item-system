@@ -9,6 +9,7 @@
 size = Vector2(128, 128)
 
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_rkbax")
 player_inventory = ExtResource("2_yw30f")
 

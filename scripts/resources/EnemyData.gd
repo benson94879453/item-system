@@ -8,3 +8,5 @@ class_name EnemyData
 @export var speed: float = 100.0   # 移動速度
 @export var reward_item: ItemData  # (擴充準備) 打死可能掉落的物品或金錢
 @export var reward_amount: int = 1
+@export var avoidance_layers: int
+@export var avoidance_mask: int

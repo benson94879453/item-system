@@ -19,5 +19,7 @@ texture = ExtResource("2_nwpjw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
+avoidance_enabled = true
+avoidance_mask = 7
 
 [node name="Timer" type="Timer" parent="."]

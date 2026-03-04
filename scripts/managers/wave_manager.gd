@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var enemy_data: EnemyData
+
 @export var enemy_scene: PackedScene
 @export var spawn_interval: float = 2.0
 
@@ -30,6 +32,11 @@ func _on_spawn_timer_timeout() -> void:
 
 func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
+		
+	if enemy.has_method("setup") and enemy_data != null:
+		enemy.setup(enemy_data)
+	else:
+		push_warning("生成失敗：怪物缺少 setup 函數或 WaveManager 未配置 enemy_data")
 	
 	# 1. 設定初始位置
 	enemy.global_position = spawn_position

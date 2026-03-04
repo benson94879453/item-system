@@ -27,6 +27,10 @@ func die() -> void:
 	queue_free()
 	
 func _physics_process(delta: float) -> void:
+	
+	if data == null:#防呆
+		return
+		
 	if nav_agent.is_navigation_finished():
 		# 敵人已到達目標（例如：對基地造成傷害）
 		return

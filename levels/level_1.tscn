@@ -20,9 +20,6 @@ tile_set = ExtResource("1_n46q3")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_n46q3")
 
-[node name="BaseEnemy" parent="NavigationRegion2D" instance=ExtResource("1_bt44k")]
-position = Vector2(291, 356)
-
 [node name="BaseTower" parent="." instance=ExtResource("2_jirdo")]
 position = Vector2(426, 243)
 
@@ -35,6 +32,6 @@ position = Vector2(565, 394)
 script = ExtResource("4_kx6l7")
 enemy_scene = ExtResource("1_bt44k")
 target_node = NodePath("../BasePosition")
-enemy_container = NodePath("../NavigationRegion2D/BaseEnemy")
+enemy_container = NodePath("")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
