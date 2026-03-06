@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c03p1vd8fpc6e"]
+[gd_scene format=3 uid="uid://c03p1vd8fpc6e"]
 
 [ext_resource type="Texture2D" uid="uid://ccd43ch345ks5" path="res://icon.svg" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://csgcyb6frrveg" path="res://player/player.gd" id="1_rkbax"]
@@ -8,20 +8,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(128, 128)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" unique_id=1702765596]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_rkbax")
 player_inventory = ExtResource("2_yw30f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1618511742]
 position = Vector2(0, -1)
 texture = ExtResource("1_oul6g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977642084]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_rkbax")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1992465032]
 
-[node name="bag_ui" parent="CanvasLayer" instance=ExtResource("3_g1dw6")]
+[node name="bag_ui" parent="CanvasLayer" unique_id=1805393891 instance=ExtResource("3_g1dw6")]
 unique_name_in_owner = true
