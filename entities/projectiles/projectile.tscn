@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://7b33gsultrr"]
+[gd_scene format=3 uid="uid://7b33gsultrr"]
 
 [ext_resource type="Script" uid="uid://c17knaqcijdde" path="res://entities/projectiles/projectile.gd" id="1_ek2yu"]
 
-[node name="Projectile" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
+radius = 6.0
+
+[node name="Projectile" type="Area2D" unique_id=1390414810]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_ek2yu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032013549]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_bullet")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1135553784]
+unique_name_in_owner = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1589955347]
+unique_name_in_owner = true

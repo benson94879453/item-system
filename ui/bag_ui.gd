@@ -113,6 +113,11 @@ func _unhandled_input(event: InputEvent) -> void:
 					# 通知 MapManager 在該格子放置防禦塔（更新地圖佔用狀態）
 					MapManager.place_tower(grid_pos, tower)
 					
+					# 注入塔的數值資料（傷害、射程、攻速、血量）
+					# 必須在 add_child 之後呼叫，確保 @onready 節點已初始化
+					if tower.has_method("setup"):
+						tower.setup(tower_data)
+					
 					# 消耗手上的一個道具
 					consume_mouse_item()
 		
