@@ -1,8 +1,24 @@
 extends Node
 
 signal game_over_triggered
+signal gold_changed(new_amount: int)
 
 var _is_game_over: bool = false
+var _gold: int = 100
+
+func get_gold() -> int:
+	return _gold
+
+func add_gold(amount: int) -> void:
+	_gold += amount
+	gold_changed.emit(_gold)
+
+func spend_gold(amount: int) -> bool:
+	if _gold < amount:
+		return false
+	_gold -= amount
+	gold_changed.emit(_gold)
+	return true
 
 func game_over() -> void:
 	if _is_game_over:

@@ -28,7 +28,9 @@ func setup(new_data: TowerData) -> void:
 
 func take_damage(amount: float) -> void:
 	_current_health -= amount
+	print("[Tower:%s] took %.1f dmg | HP: %.1f" % [name, amount, _current_health])
 	if _current_health <= 0:
+		print("[Tower:%s] DESTROYED!" % name)
 		die()
 
 func die() -> void:

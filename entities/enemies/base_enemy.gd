@@ -25,6 +25,11 @@ func setup(new_data: EnemyData) -> void:
 	_current_health = data.max_health
 	if data.texture:
 		sprite.texture = data.texture
+	
+	nav_agent.avoidance_enabled = true
+	nav_agent.radius = data.collision_radius
+	if not nav_agent.velocity_computed.is_connected(_on_velocity_computed):
+		nav_agent.velocity_computed.connect(_on_velocity_computed)
 
 func take_damage(amount: float) -> void:
 	_current_health -= amount
@@ -57,8 +62,12 @@ func _physics_process(delta: float) -> void:
 
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	var direction: Vector2 = global_position.direction_to(next_path_position)
-	velocity = direction * data.speed 
-	
+	nav_agent.velocity = direction * data.speed
+
+func _on_velocity_computed(safe_velocity: Vector2) -> void:
+	if _is_attacking:
+		return
+	velocity = safe_velocity
 	move_and_slide()
 	_check_tower_collision()
 
@@ -70,6 +79,8 @@ func _process_attack(delta: float) -> void:
 		_current_attack_cd = data.attack_speed
 
 func _check_tower_collision() -> void:
+	if _is_attacking:
+		return
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -87,7 +98,7 @@ func set_target(target_pos: Vector2) -> void:
 
 func _on_reach_base() -> void:
 	var base = get_tree().get_first_node_in_group("Base")
-	if base and base.has_method("take_damage"):
-		var dmg = data.attack_power if data else 10.0
-		base.take_damage(dmg)
-	queue_free()
+	if base and base.is_in_group("Attackable"):
+		_is_attacking = true
+		_target_building = base
+		_current_attack_cd = 0.0

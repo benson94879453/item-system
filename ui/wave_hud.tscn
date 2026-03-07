@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c102atmadgtbq"]
+
+[ext_resource type="Script" uid="uid://kpvnr7jrjmij" path="res://ui/wave_hud.gd" id="1_bo647"]
+
+[node name="WaveHUD" type="Control" unique_id=2065907095]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bo647")
+
+[node name="StartWaveButton" type="Button" parent="." unique_id=1943890417]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 976.0
+offset_top = 587.0
+offset_right = 1126.0
+offset_bottom = 627.0
+text = "Start Wave"
+
+[node name="GoldLabel" type="Label" parent="." unique_id=1104085769]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 40.0
+text = "Gold: 100"
+
+[node name="WaveLabel" type="Label" parent="." unique_id=957365478]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 200.0
+offset_bottom = 75.0
+text = "Wave: 1 / ?"

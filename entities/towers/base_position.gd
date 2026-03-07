@@ -16,7 +16,9 @@ func _ready() -> void:
 
 func take_damage(amount: float) -> void:
 	_current_health -= amount
+	print("[BasePosition] took %.1f dmg | HP: %.1f / %.1f" % [amount, _current_health, max_health])
 	if _current_health <= 0:
+		print("[BasePosition] DESTROYED!")
 		die()
 
 func die() -> void:
