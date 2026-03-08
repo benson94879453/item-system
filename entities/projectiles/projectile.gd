@@ -12,7 +12,8 @@ var _pierce_count: int = 0
 var _hit_targets: Array[Node2D] = []
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	# Enemy 現在是 Area2D，改用 area_entered 偵測命中
+	area_entered.connect(_on_area_entered)
 	screen_notifier.screen_exited.connect(_on_screen_exited)
 
 func setup(target: Node2D, damage: float, speed: float = 400.0, pierce_count: int = 0, source: Node2D = null) -> void:
@@ -32,13 +33,13 @@ func _physics_process(delta: float) -> void:
 	var direction: Vector2 = global_position.direction_to(_target.global_position)
 	global_position += direction * _speed * delta
 
-func _on_body_entered(body: Node2D) -> void:
-	if body in _hit_targets:
+func _on_area_entered(area: Area2D) -> void:
+	if area in _hit_targets:
 		return
 
-	if body.has_method("take_damage"):
-		body.take_damage(_damage)
-		_hit_targets.append(body)
+	if area.has_method("take_damage"):
+		area.take_damage(_damage)
+		_hit_targets.append(area)
 
 		if _pierce_count <= 0:
 			queue_free()

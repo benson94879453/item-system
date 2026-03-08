@@ -42,14 +42,15 @@ func _on_attack_timer_timeout() -> void:
 		_shoot()
 
 func _find_target() -> void:
-	var bodies = range_area.get_overlapping_bodies()
-	if bodies.is_empty():
+	# Enemy 現在是 Area2D，改用 get_overlapping_areas() 偵測
+	var areas = range_area.get_overlapping_areas()
+	if areas.is_empty():
 		_current_target = null
 		return
 
-	for body in bodies:
-		if body.is_in_group("Enemy"):
-			_current_target = body
+	for area in areas:
+		if area.is_in_group("Enemy"):
+			_current_target = area
 			return
 			
 	_current_target = null

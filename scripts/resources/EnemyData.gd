@@ -13,3 +13,4 @@ class_name EnemyData
 @export var collision_radius: float = 16.0
 @export var attack_power: float = 10.0 # 敵人攻擊力
 @export var attack_speed: float = 1.0  # 攻擊間隔(秒)
+@export var threat_level: int = 0      # 威脅等級，數值越高 Z-index 越大（視覺上顯示在最前方）
