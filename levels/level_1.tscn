@@ -33,6 +33,7 @@ position = Vector2(720, 464)
 
 [node name="BasePosition" parent="." unique_id=71623817 instance=ExtResource("4_gwceb")]
 position = Vector2(720, 368)
+max_health = 1000.0
 
 [node name="WaveManager" type="Node2D" parent="." unique_id=2092418293 node_paths=PackedStringArray("target_node", "enemy_container")]
 script = ExtResource("4_kx6l7")
